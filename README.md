@@ -2,49 +2,21 @@
 
 ![Speech MCP Server Banner](./speech_mcp_banner.jpg)
 
-Local Stdio Model Context Protocol (MCP) server wrapping C# Kokoro ONNX neural text-to-speech engine with **thread-clamped zero-VRAM CPU execution**.
+Local Stdio Model Context Protocol (MCP) server wrapping the **Kokoro ONNX Neural TTS Engine** with real-time **Voice Vector Algebra**, **Central Wisconsin Vernacular Lexicon Overrides**, and **thread-clamped zero-VRAM CPU execution**.
 
-> *"Mind telemetry locked. Zero liability speech engine initialized."*
-
----
-
-## 🔊 Audio Demo Samples
-
-### 1. Standard Speech & Baseline
-<audio controls style="width: 100%;">
-  <source src="https://raw.githubusercontent.com/yavru421/speech-mcp-server/master/snaptempo_mind_sample.mp3" type="audio/mpeg">
-  <source src="https://raw.githubusercontent.com/yavru421/speech-mcp-server/master/snaptempo_mind_sample.wav" type="audio/wav">
-  Your browser does not support the audio element.
-</audio>
+> *"Neural voice vectors mixed mathematically. Zero VRAM overhead. Pure local performance."*
 
 ---
 
-## ⚡ Key Architectural Features
+## 🔊 Key Architectural Features
 
-- **Zero GPU VRAM Overhead**: Operates entirely on CPU via ONNX Runtime Execution Provider. Keeps GPU completely idle (0% load, ~50°C thermal ambient).
-- **Thread-Clamped CPU Execution**: Throttled to 2 worker threads (`intra_op_num_threads = 2`, `OMP_NUM_THREADS = 2`) to eliminate CPU spikes while maintaining sub-200ms latency.
-- **Zero-Latency Neural Speech**: Hardware audio output via native C# `.NET 10` SpeechApp bridge.
-- **Kokoro ONNX Engine**: High-fidelity 24kHz neural TTS with multiple voice profiles (`am_adam`, `af_bella`).
-- **Dynamic SSML & Prosody Parsing**:
-  - `[pause=400ms]` — Precise silence insertion.
-  - `[slow]...[/slow]` — Reduced tempo (0.75x) for emphasis.
-  - `[fast]...[/fast]` — Accelerated speech (1.4x).
-  - `[whisper]...[/whisper]` — Softened vocal cadence.
-  - `[voice=af_bella]...[/voice]` — Mid-sentence voice profile switching.
-- **MCP Stdio Transport**: Full Model Context Protocol compatibility for AI agents and LLM tool integration.
-
----
-
-## 📐 Pipeline Architecture
-
-```mermaid
-graph TD
-    A[MCP Client / Antigravity AI] -->|Stdio Protocol| B[speech-mcp-server Node.js]
-    B -->|Invokes Native Process| C[C# .NET 10 SpeechApp]
-    C -->|Throttled 2-Thread Execution| D[Kokoro ONNX Python Engine]
-    D -->|Synthesizes 24kHz Audio| E[Timestamped Temp WAV Buffer]
-    E -->|Streams Sound| F[Workstation Hardware Output]
-```
+- **Voice Vector Algebra Engine**: Mix multiple voice profiles using linear vector algebra directly in Python:
+  $$\text{Voice} = (\text{am\_adam} \times 0.65) + (\text{bm\_lewis} \times 0.30) + (\text{am\_michael} \times 0.05)$$
+- **Central Wisconsin Vernacular Dict**: Built-in phonetic lexicon mapper enforcing regional dialect pacing and word pronunciations (`bag` $\to$ `bayg`, `roof` $\to$ `ruff`, `creek` $\to$ `crick`, `know'm'sayin`).
+- **Zero GPU VRAM Overhead**: Operates entirely on CPU via ONNX Runtime Execution Provider. Keeps GPU completely idle (0% load, 0 MB VRAM).
+- **Thread-Clamped CPU Execution**: Throttled to 2 worker threads (`OMP_NUM_THREADS = 2`) to eliminate CPU spikes while maintaining sub-200ms latency.
+- **Kokoro ONNX Engine**: High-fidelity 24kHz neural TTS with multiple base voice profiles (`am_adam`, `af_bella`, `bm_lewis`, `am_michael`).
+- **MCP Stdio Transport**: Full Model Context Protocol compatibility for AI agents and LLM tool integration (`/speak`).
 
 ---
 
@@ -52,10 +24,9 @@ graph TD
 
 ### Prerequisites
 - Node.js v18+
-- Windows OS with .NET 10 SDK / runtime installed
 - Python 3.10+ with `kokoro-onnx`, `onnxruntime`, `soundfile`, `numpy`
 
-### Build
+### Installation & Build
 ```bash
 git clone https://github.com/yavru421/speech-mcp-server.git
 cd speech-mcp-server
@@ -63,8 +34,13 @@ npm install
 npm run build
 ```
 
+### Usage
+```bash
+python synth.py "Lexicon overrides active for DuckDB and WASAPI." "am_adam*0.65 + bm_lewis*0.30" "0.94"
+```
+
 ### Configuration (MCP Client)
-Add to your `mcpServers` settings:
+Add to your `mcpServers` configuration:
 ```json
 {
   "speech-mcp-server": {
