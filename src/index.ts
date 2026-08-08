@@ -3,8 +3,12 @@ import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js"
 import { z } from "zod";
 import { exec } from "node:child_process";
 import { promisify } from "node:util";
+import { join, dirname } from "node:path";
+import { fileURLToPath } from "node:url";
 
 const execAsync = promisify(exec);
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const server = new McpServer({
   name: "speech-mcp-server",
@@ -21,7 +25,7 @@ server.tool(
   },
   async ({ text, voice, speed }) => {
     try {
-      const exePath = `c:\\dev\\SpeechApp\\bin\\Debug\\net10.0-windows\\SpeechApp.exe`;
+      const exePath = join(__dirname, "..", "bin", "SpeechApp.exe");
       const escapedText = text.replace(/"/g, "");
       const cmd = `"${exePath}" "${escapedText}" "${voice}" "${speed}"`;
       
