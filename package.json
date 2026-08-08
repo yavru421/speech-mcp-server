@@ -1,0 +1,31 @@
+{
+  "name": "speech-mcp-server",
+  "version": "1.0.0",
+  "description": "Local Stdio Model Context Protocol (MCP) server wrapping C# Kokoro ONNX neural text-to-speech engine.",
+  "type": "module",
+  "main": "build/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node build/index.js",
+    "dev": "tsx src/index.ts"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "speech",
+    "tts",
+    "kokoro",
+    "onnx"
+  ],
+  "author": "John Dondlinger",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.1.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.9",
+    "typescript": "^5.5.2",
+    "tsx": "^4.16.2"
+  }
+}
