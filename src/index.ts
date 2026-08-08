@@ -20,25 +20,32 @@ server.tool(
   "Synthesizes and speaks text out loud through workstation speakers using local C# SpeechApp (Kokoro ONNX engine).",
   {
     text: z.string().describe("The text content to read out loud"),
-    voice: z.string().optional().default("am_adam").describe("Voice model profile (default: am_adam)"),
-    speed: z.number().optional().default(1.0).describe("Speech speed multiplier (default: 1.0)")
+    voice: z.string().optional().default("am_adam*0.65 + bm_lewis*0.30 + am_michael*0.05").describe("Voice model profile expression"),
+    speed: z.number().optional().default(0.95).describe("Speech speed multiplier (default: 0.95)")
   },
   async ({ text, voice, speed }) => {
     try {
-      const exePath = join(__dirname, "..", "bin", "SpeechApp.exe");
-      const escapedText = text.replace(/"/g, "");
-      const cmd = `"${exePath}" "${escapedText}" "${voice}" "${speed}"`;
+      const synthScript = join(__dirname, "..", "synth.py");
+      const pythonExe = "C:\\Miniforge\\python.exe";
+      const escapedText = text.replace(/"/g, '\\"');
+      const cmd = `"${pythonExe}" "${synthScript}" "${escapedText}" "${voice}" "${speed}"`;
       
       const { stdout, stderr } = await execAsync(cmd, {
         env: { ...process.env, FORCE_COLOR: "0" },
         maxBuffer: 10 * 1024 * 1024
       });
 
+      const match = stdout.match(/SYNTH_WAV:(.+)/);
+      if (match && match[1]) {
+        const wavPath = match[1].trim();
+        await execAsync(`powershell -c "(New-Object Media.SoundPlayer '${wavPath}').PlaySync()"`);
+      }
+
       return {
         content: [
           {
             type: "text",
-            text: `Speech Output:\n${stdout}\n${stderr ? `Errors:\n${stderr}` : ""}`
+            text: `Speech Output (Kokoro ONNX):\n${stdout}\n${stderr ? `Errors:\n${stderr}` : ""}`
           }
         ]
       };
