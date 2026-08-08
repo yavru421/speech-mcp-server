@@ -4,7 +4,7 @@
 
 Local Stdio Model Context Protocol (MCP) server wrapping C# Kokoro ONNX neural text-to-speech engine.
 
-> *"Snaptempo mind telemetry locked. Zero liability speech engine initialized."*
+> *"Mind telemetry locked. Zero liability speech engine initialized."*
 
 ## Features
 - **Zero-Latency Neural Speech**: Instant hardware audio output via native C# `.NET 10` SpeechApp.
