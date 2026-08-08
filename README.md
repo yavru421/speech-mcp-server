@@ -16,7 +16,13 @@ Local Stdio Model Context Protocol (MCP) server wrapping C# Kokoro ONNX neural t
 
 ## Features
 - **Zero-Latency Neural Speech**: Instant hardware audio output via native C# `.NET 10` SpeechApp.
-- **Kokoro ONNX Model**: High-fidelity neural TTS with voice profiles (e.g. `am_adam`).
+- **Kokoro ONNX Model**: High-fidelity neural TTS with voice profiles (e.g. `am_adam`, `af_bella`).
+- **SSML & Prosody Parsing**: Support for inline emotion and timing tags:
+  - `[pause=500ms]` — Precise silence insertion.
+  - `[slow]...[/slow]` — Reduced tempo for emphasis.
+  - `[fast]...[/fast]` — Accelerated speech.
+  - `[whisper]...[/whisper]` — Softened vocal cadence.
+  - `[voice=af_bella]...[/voice]` — Mid-sentence voice profile switching.
 - **MCP Stdio Transport**: Native integration for AI agents and LLM clients.
 
 ## Quickstart
