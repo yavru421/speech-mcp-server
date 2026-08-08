@@ -6,13 +6,16 @@ Local Stdio Model Context Protocol (MCP) server wrapping C# Kokoro ONNX neural t
 
 > *"Mind telemetry locked. Zero liability speech engine initialized."*
 
+## Audio Demo Sample
+
+<audio controls src="https://raw.githubusercontent.com/yavru421/speech-mcp-server/master/snaptempo_mind_sample.wav">
+  Your browser does not support the audio element.
+</audio>
+
 ## Features
 - **Zero-Latency Neural Speech**: Instant hardware audio output via native C# `.NET 10` SpeechApp.
 - **Kokoro ONNX Model**: High-fidelity neural TTS with voice profiles (e.g. `am_adam`).
 - **MCP Stdio Transport**: Native integration for AI agents and LLM clients.
-
-## Audio Demo Sample
-Check out the generated sample: [`snaptempo_mind_sample.wav`](./snaptempo_mind_sample.wav)
 
 ## Quickstart
 
