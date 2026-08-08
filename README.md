@@ -1,11 +1,18 @@
 # speech-mcp-server
 
+![Speech MCP Server Banner](./speech_mcp_banner.jpg)
+
 Local Stdio Model Context Protocol (MCP) server wrapping C# Kokoro ONNX neural text-to-speech engine.
+
+> *"Snaptempo mind telemetry locked. Zero liability speech engine initialized."*
 
 ## Features
 - **Zero-Latency Neural Speech**: Instant hardware audio output via native C# `.NET 10` SpeechApp.
 - **Kokoro ONNX Model**: High-fidelity neural TTS with voice profiles (e.g. `am_adam`).
 - **MCP Stdio Transport**: Native integration for AI agents and LLM clients.
+
+## Audio Demo Sample
+Check out the generated sample: [`snaptempo_mind_sample.wav`](./snaptempo_mind_sample.wav)
 
 ## Quickstart
 
@@ -15,7 +22,7 @@ Local Stdio Model Context Protocol (MCP) server wrapping C# Kokoro ONNX neural t
 
 ### Installation & Build
 ```bash
-git clone https://github.com/snaptempo/speech-mcp-server.git
+git clone https://github.com/yavru421/speech-mcp-server.git
 cd speech-mcp-server
 npm install
 npm run build
@@ -27,7 +34,7 @@ Add to your `mcpServers` configuration:
 {
   "speech-mcp-server": {
     "command": "node",
-    "args": ["C:/dev/speech-mcp-server/build/index.js"]
+    "args": ["<path_to_repo>/build/index.js"]
   }
 }
 ```
