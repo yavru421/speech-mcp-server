@@ -8,7 +8,9 @@ Local Stdio Model Context Protocol (MCP) server wrapping C# Kokoro ONNX neural t
 
 ## Audio Demo Sample
 
-<audio controls src="https://raw.githubusercontent.com/yavru421/speech-mcp-server/master/snaptempo_mind_sample.wav">
+<audio controls style="width: 100%;">
+  <source src="https://raw.githubusercontent.com/yavru421/speech-mcp-server/master/snaptempo_mind_sample.mp3" type="audio/mpeg">
+  <source src="https://raw.githubusercontent.com/yavru421/speech-mcp-server/master/snaptempo_mind_sample.wav" type="audio/wav">
   Your browser does not support the audio element.
 </audio>
 
