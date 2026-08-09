@@ -1,0 +1,12 @@
+c:\dev\speech-mcp-server\bin\SpeechApp.exe
+c:\dev\speech-mcp-server\bin\SpeechApp.dll
+c:\dev\speech-mcp-server\bin\SpeechApp.deps.json
+c:\dev\speech-mcp-server\bin\SpeechApp.runtimeconfig.json
+c:\dev\speech-mcp-server\bin\SpeechApp.pdb
+c:\dev\speech-mcp-server\bin\NAudio.dll
+c:\dev\speech-mcp-server\bin\NAudio.Asio.dll
+c:\dev\speech-mcp-server\bin\NAudio.Core.dll
+c:\dev\speech-mcp-server\bin\NAudio.Midi.dll
+c:\dev\speech-mcp-server\bin\NAudio.Wasapi.dll
+c:\dev\speech-mcp-server\bin\NAudio.WinForms.dll
+c:\dev\speech-mcp-server\bin\NAudio.WinMM.dll
